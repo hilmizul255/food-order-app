@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import logoMain from './logoMain.svg';
+import logoMain from '../logoMain.svg';
 import './Footer.css';
 import Button from '@mui/material/Button';
-import itemsContext from "../store/items-context";
+import itemsContext from "../../store/items-context";
 
 function Footer() {
     const itemsCtx = useContext(itemsContext);

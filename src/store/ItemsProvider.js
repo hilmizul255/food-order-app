@@ -23,6 +23,9 @@ const ItemsProvider = (props) => {
   const togglePageHandler = () => {
     setSwitchPage(prev => prev === "User" ? "Admin" : "User");
   };
+  
+
+  const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
   const contextValue = {
     itemsData: items,
@@ -31,6 +34,7 @@ const ItemsProvider = (props) => {
     removeItem: removeItemHandler,
     updateItem: updateItemHandler,
     togglePage: togglePageHandler,
+    totalItems: totalItems,
   };
 
   return (
