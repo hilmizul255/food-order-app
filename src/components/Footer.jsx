@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import logoMain from './logoMain.svg';
-import './Footer.css';
+import '../mui-styles/Footer.css';
 import Button from '@mui/material/Button';
 import itemsContext from "../store/items-context";
 

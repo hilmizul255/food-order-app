@@ -1,21 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import itemsContext from "./items-context";
+import api from "../api/itemsData";
 
 const ItemsProvider = (props) => {
-  const [items, setItems] = useState([]);
+  const [itemsData, setItemsData] = useState([]);
   const [switchPage, setSwitchPage] = useState("User");
 
+  //retrieveItemsData
+
+  const retrieveItemsData = async () => {
+    const response = await api.get("/");
+    return response.data;
+  };
 
   const addNewItemHandler = (item) => {
-    setItems(prev => [...prev, item]);
+    setItemsData(prev => [...prev, item]);
   };
 
   const removeItemHandler = (id) => {
-    setItems(prev => prev.filter(item => item.id !== id));
+    setItemsData(prev => prev.filter(item => item.id !== id));
   };
 
   const updateItemHandler = (id, updatedItem) => {
-    setItems(prev =>
+    setItemsData(prev =>
       prev.map(item => item.id === id ? updatedItem : item)
     );
   };
@@ -24,13 +31,19 @@ const ItemsProvider = (props) => {
     setSwitchPage(prev => prev === "User" ? "Admin" : "User");
   };
 
+  const itemsDataHandler = (itemsData) => {
+    setItemsData(itemsData);
+  };
+
   const contextValue = {
-    itemsData: items,
+    itemsData: itemsData,
+    setItemsData: setItemsData,
     switchPage: switchPage,
     addNewItem: addNewItemHandler,
     removeItem: removeItemHandler,
     updateItem: updateItemHandler,
     togglePage: togglePageHandler,
+    retrieveItemsData: retrieveItemsData,
   };
 
   return (

@@ -6,13 +6,14 @@ import Admin from './pages/Admin';
 import Footer from './components/Footer';
 
 
+
 function App() {
 
 
   const itemsCtx = useContext(itemsContext);
   return (
     <Fragment>
-      {itemsCtx.switchPage === 'User' ? <Users /> : <Admin />}
+      {itemsCtx.switchPage === 'User' ? <Users/> : <Admin />}
       <Footer />
     </Fragment>
   );
