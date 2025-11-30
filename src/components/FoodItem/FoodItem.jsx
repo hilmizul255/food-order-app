@@ -13,6 +13,7 @@ import itemsContext from '../../store/items-context';
 
 
 
+
 function FoodItem(props) {
     const itemsCtx = useContext(itemsContext);
     return (
@@ -43,7 +44,11 @@ function FoodItem(props) {
             <CardActions>
                 {itemsCtx.switchPage === "User" ? <Button variant="contained" color="secondary" fullWidth>
                     ADD TO CART
-                </Button>: <Button variant="contained" color="error" fullWidth>
+                </Button>: <Button 
+                variant="contained" 
+                color="error" 
+                fullWidth
+                onClick={() => itemsCtx.removeItem(props.id)}>
                     REMOVE FROM CART
                 </Button>}
             </CardActions>

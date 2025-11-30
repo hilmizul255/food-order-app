@@ -1,8 +1,10 @@
 import { useState } from "react";
 import itemsContext from "./items-context";
 
+import itemsData from "../db.json";
+
 const ItemsProvider = (props) => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(itemsData);
   const [switchPage, setSwitchPage] = useState("User");
 
 
@@ -23,7 +25,7 @@ const ItemsProvider = (props) => {
   const togglePageHandler = () => {
     setSwitchPage(prev => prev === "User" ? "Admin" : "User");
   };
-  
+
 
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 

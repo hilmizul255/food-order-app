@@ -1,0 +1,11 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "Burger",
+            "description": "A delicious burger with fresh ingredients",
+            "price": 10,
+            "image": "https://example.com/burger.jpg"
+        }
+    ]
+}
