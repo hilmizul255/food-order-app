@@ -14,7 +14,7 @@ function Footer() {
     return <>
         <footer>
             <img src={logoMain} alt="logo" />
-            <Button variant="contained" color="primary" onClick={togglePageHandler}>{itemsCtx.switchPage}</Button>
+            <Button variant="contained" color="secondary" onClick={togglePageHandler}>{itemsCtx.switchPage}</Button>
             <p>© 2025 Food Order App. All rights reserved.</p>
         </footer>
     </>

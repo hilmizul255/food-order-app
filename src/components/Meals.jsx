@@ -1,12 +1,11 @@
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import MealsItem from './MealsItem';
 import api from '../api/itemsData';
 import { useContext, useEffect, useState } from 'react';
 import itemsContext from '../store/items-context';
 
 const Meals = () => {
-
-    const {itemsData, retrieveItemsData, setItemsData} = useContext(itemsContext);
+    const { itemsData, retrieveItemsData, setItemsData } = useContext(itemsContext);
 
     useEffect(() => {
         const getAllItemsData = async () => {
@@ -19,18 +18,13 @@ const Meals = () => {
     return (
         <section>
             <Grid container spacing={2} alignItems="center" justifyContent="center">
-                {itemsData.map((item) => (
-                    <Grid
-                        xs={12}
-                        sm={6}
-                        md={4}
-
-                    >
+                {itemsData.map((item, index) => (
+                  
                         <MealsItem
-                            key={item.id}
+                            key={index}
+                            id={index}
                             item={item}
                         />
-                    </Grid>
                 ))}
             </Grid>
         </section>

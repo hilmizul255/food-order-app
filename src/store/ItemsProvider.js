@@ -13,9 +13,26 @@ const ItemsProvider = (props) => {
     return response.data;
   };
 
-  const addNewItemHandler = (item) => {
-    setItemsData(prev => [...prev, item]);
+
+
+
+  // const addNewItemHandler = (item) => {
+  //   setItemsData(prev => [...prev, item]);
+  //   console.log(item);
+  // };
+
+  //postItemsData
+
+  const addNewItemHandler = async (formData, index) => {
+    const request = {
+      id: index,
+      ...formData,
+    }
+    const response = await api.post("/", request);
+    setItemsData([...itemsData, response.data]);
+    console.log(response.data)
   };
+
 
   const removeItemHandler = (id) => {
     setItemsData(prev => prev.filter(item => item.id !== id));
