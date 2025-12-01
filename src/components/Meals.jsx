@@ -18,11 +18,11 @@ const Meals = () => {
     return (
         <section>
             <Grid container spacing={2} alignItems="center" justifyContent="center">
-                {itemsData.map((item, index) => (
+                {itemsData.map((item) => (
                   
                         <MealsItem
-                            key={index}
-                            id={index}
+                            // key={index}
+                            // id={index}
                             item={item}
                         />
                 ))}

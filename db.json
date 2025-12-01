@@ -22,25 +22,11 @@
       "image": "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg"
     },
     {
-      "id": "c6070f00-fc48-4760-884c-be247054d31c",
+      "id": "31da9757-e4eb-47f1-bfa5-5ff8de9126f9",
       "name": "test",
-      "price": "53",
+      "price": "543",
       "description": "test",
-      "image": "https://iili.io/foZseiQ.jpg"
-    },
-    {
-      "id": "ccd641d5-332a-435f-853f-e07ec704c98d",
-      "name": "kjh",
-      "price": "021",
-      "description": "kj",
-      "image": "https://images.pexels.com/photos/33245092/pexels-photo-33245092.jpeg"
-    },
-    {
-      "id": "815cdba5-8c5e-49ef-9db5-c3a64633f619",
-      "name": "hg",
-      "price": "21",
-      "description": "gh",
-      "image": "21"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIEHb137g9dKDGpYGFfN-mlVcANPfqC4NXg&s"
     }
   ]
 }

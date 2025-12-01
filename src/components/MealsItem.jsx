@@ -1,10 +1,13 @@
-import { Card, CardContent, Typography, Paper, Box } from '@mui/material';
+import { Card, CardContent, Typography, Paper, Box, Button } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import {useContext} from 'react';
+import itemsContext from '../store/items-context';
 
 
 function MealsItem(props) {
 
   const { name, description, price, image } = props.item;
+  const {togglePage, switchPage, removeItem} = useContext(itemsContext);
   return (
     <Grid
       xs={12}
@@ -20,13 +23,21 @@ function MealsItem(props) {
           <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 1, justifyContent: "space-between" }}>
             <Box>
               <Typography variant="h5">{name}</Typography>
-            <Typography variant="body2">{description}</Typography>
+              <Typography variant="body2">{description}</Typography>
             </Box>
-          <Box>
-            <Typography variant="h5">${price}</Typography>
+            <Box>
+              <Typography variant="h5">${price}</Typography>
+            </Box>
           </Box>
-          </Box>
-          
+{switchPage === "User" ? (
+  <Box>
+    <Button variant="contained" color="primary" fullWidth onClick={togglePage}>Add to Cart</Button>          
+  </Box>
+) : (
+  <Box>
+    <Button variant="contained" color="error" fullWidth onClick={() => removeItem(props.item.id)}>Remove Item</Button>          
+  </Box>
+)}
         </CardContent>
       </Card>
     </Grid>

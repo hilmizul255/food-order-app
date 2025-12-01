@@ -34,8 +34,10 @@ const ItemsProvider = (props) => {
   };
 
 
-  const removeItemHandler = (id) => {
-    setItemsData(prev => prev.filter(item => item.id !== id));
+  const removeItemHandler = async (id) => {
+    await api.delete(`/${id}`);
+    const filteredItems = itemsData.filter((item) => item.id !== id)
+    setItemsData(filteredItems)
   };
 
   const updateItemHandler = (id, updatedItem) => {
