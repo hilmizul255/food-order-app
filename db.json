@@ -1,13 +1,6 @@
 {
   "itemsData": [
     {
-      "id": "1",
-      "name": "Burger",
-      "price": 10,
-      "description": "A delicious burger",
-      "image": "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg"
-    },
-    {
       "id": "2",
       "name": "Pizza",
       "price": 20,

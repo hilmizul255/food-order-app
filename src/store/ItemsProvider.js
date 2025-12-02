@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import itemsContext from "./items-context";
 import api from "../api/itemsData";
 
@@ -12,9 +12,6 @@ const ItemsProvider = (props) => {
     const response = await api.get("/");
     return response.data;
   };
-
-
-
 
   // const addNewItemHandler = (item) => {
   //   setItemsData(prev => [...prev, item]);

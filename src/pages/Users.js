@@ -1,23 +1,34 @@
-import React from 'react';
+import { useState } from 'react';
 import './pages.css';
 import Appbar from '../components/Appbar';
 import Cart from '../components/Cart';
 import Banner from '../components/Banner';
 import AboutUs from '../components/AboutUs';
 import Meals from '../components/Meals';
+import CartProvider from '../store/CartProvider';
 
 
 function Users() {
+    const [isValid, setIsVaild] = useState(false);
+    const showModalHandler = () => {
+        setIsVaild(true);
+    };
+    const hideModalHandler = () => {
+        setIsVaild(false);
+    };
+
     return (
-        <div>
+
+        <CartProvider>
             <h1>Users</h1>
-            <Appbar />
-            <Cart />
+            <Appbar showModal={showModalHandler} />
+            {isValid && <Cart hideModal={hideModalHandler} />}
+            {/* <Cart hideModal={hideModalHandler}/> */}
             <Banner />
             <AboutUs />
-            <Meals />
+            <Meals showCart={showModalHandler} />
+        </CartProvider>
 
-        </div>
     );
 }
 

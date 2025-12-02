@@ -4,7 +4,7 @@ import api from '../api/itemsData';
 import { useContext, useEffect, useState } from 'react';
 import itemsContext from '../store/items-context';
 
-const Meals = () => {
+const Meals = (props) => {
     const { itemsData, retrieveItemsData, setItemsData } = useContext(itemsContext);
 
     useEffect(() => {
@@ -19,12 +19,13 @@ const Meals = () => {
         <section>
             <Grid container spacing={2} alignItems="center" justifyContent="center">
                 {itemsData.map((item) => (
-                  
-                        <MealsItem
-                            // key={index}
-                            // id={index}
-                            item={item}
-                        />
+
+                    <MealsItem
+                        // key={index}
+                        // id={index}
+                        item={item}
+                        OnshowCart={props.showCart}
+                    />
                 ))}
             </Grid>
         </section>
