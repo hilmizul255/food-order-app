@@ -1,7 +1,6 @@
-import Grid from '@mui/material/Grid';
+import {Grid, Typography} from '@mui/material';
 import MealsItem from './MealsItem';
-import api from '../api/itemsData';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import itemsContext from '../store/items-context';
 
 const Meals = (props) => {
@@ -17,12 +16,13 @@ const Meals = (props) => {
 
     return (
         <section>
-            <Grid container spacing={2} alignItems="center" justifyContent="center">
-                {itemsData.map((item) => (
+            <Typography variant="h4" sx={{ textAlign: "center", padding: "50px" }}>AVAILABLE MEALS</Typography>
+            <Grid container spacing={2} alignItems="center" justifyContent="center" >
+                {itemsData.map((item, index) => (
 
                     <MealsItem
-                        // key={index}
-                        // id={index}
+                        key={index}
+                        id={index}
                         item={item}
                         OnshowCart={props.showCart}
                     />

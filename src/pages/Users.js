@@ -6,6 +6,7 @@ import Banner from '../components/Banner';
 import AboutUs from '../components/AboutUs';
 import Meals from '../components/Meals';
 import CartProvider from '../store/CartProvider';
+import Card from '@mui/material/Card';
 
 
 function Users() {
@@ -20,13 +21,13 @@ function Users() {
     return (
 
         <CartProvider>
-            <h1>Users</h1>
-            <Appbar showModal={showModalHandler} />
-            {isValid && <Cart hideModal={hideModalHandler} />}
-            {/* <Cart hideModal={hideModalHandler}/> */}
+            <Card sx={{backgroundColor: '#EDEDED'}}>
             <Banner />
             <AboutUs />
+            <Appbar showModal={showModalHandler} />
+            {isValid && <Cart hideModal={hideModalHandler} />}
             <Meals showCart={showModalHandler} />
+            </Card>
         </CartProvider>
 
     );

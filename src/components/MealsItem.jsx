@@ -12,15 +12,11 @@ function MealsItem(props) {
   const cartCtx = useContext(CartContext);
   return (
     <Grid
-      xs={12}
-      sm={6}
-      md={4}
-
-    >
+      size={{ xs: 12, sm: 6, md: 4 }}>
       <Card sx={{ maxWidth: 345 }}>
-        <CardContent>
-          <Paper sx={{ borderRadius: 5, overflow: "hidden", height: "250px", width: "250px" }}>
-            <img src={image} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+        <CardContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Paper sx={{ borderRadius: 5, overflow: "hidden", height: "250px", width: "100%" }}>
+            <img src={image || null} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
           </Paper>
           <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 1, justifyContent: "space-between" }}>
             <Box>
@@ -32,7 +28,7 @@ function MealsItem(props) {
             </Box>
           </Box>
           {switchPage === "User" ? (
-            <Box>
+            <Box >
               <Button variant="contained" color="primary" fullWidth onClick={() => { cartCtx.addItem({ ...props.item, quantity: 1 }); props.OnshowCart(); }}>Add to Cart</Button>
             </Box>
           ) : (

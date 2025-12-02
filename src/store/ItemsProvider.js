@@ -1,6 +1,7 @@
 import { useState } from "react";
 import itemsContext from "./items-context";
 import api from "../api/itemsData";
+import freeImage from "../api/freeImage";
 
 const ItemsProvider = (props) => {
   const [itemsData, setItemsData] = useState([]);
@@ -13,16 +14,9 @@ const ItemsProvider = (props) => {
     return response.data;
   };
 
-  // const addNewItemHandler = (item) => {
-  //   setItemsData(prev => [...prev, item]);
-  //   console.log(item);
-  // };
 
-  //postItemsData
-
-  const addNewItemHandler = async (formData, index) => {
+  const addNewItemHandler = async (formData) => {
     const request = {
-      id: index,
       ...formData,
     }
     const response = await api.post("/", request);
@@ -47,8 +41,15 @@ const ItemsProvider = (props) => {
     setSwitchPage(prev => prev === "User" ? "Admin" : "User");
   };
 
-  const itemsDataHandler = (itemsData) => {
-    setItemsData(itemsData);
+  // const itemsDataHandler = (itemsData) => {
+  //   setItemsData(itemsData);
+  // };
+
+  //POST Image
+
+  const uploadImageHandler = async (file) => {
+    const response = await freeImage(file);
+    return response.data;
   };
 
   const contextValue = {
@@ -60,6 +61,7 @@ const ItemsProvider = (props) => {
     updateItem: updateItemHandler,
     togglePage: togglePageHandler,
     retrieveItemsData: retrieveItemsData,
+    uploadImage: uploadImageHandler
   };
 
   return (

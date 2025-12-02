@@ -1,8 +1,8 @@
 import { Box, Button, TextField } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import itemsContext from '../store/items-context';
 import { v4 as uuidv4 } from 'uuid';
-import uploadToFreeImageHost from '../api/freeimage';
+import freeImage from '../api/freeImage';
 
 const AdminForm = (props) => {
 
@@ -13,6 +13,8 @@ const AdminForm = (props) => {
         image: ''
     });
 
+    const fileInputRef = useRef(null);
+
     const { addNewItem } = useContext(itemsContext);
 
     function handleChange(event) {
@@ -22,7 +24,7 @@ const AdminForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.name === '' || formData.description === '' || formData.price === '' || formData.image === '') {
+        if (formData.name === '' || formData.description === '' || formData.price === '' || fileInputRef.current.value === '') {
             alert("Please fill all the fields");
             return;
         }
@@ -34,14 +36,32 @@ const AdminForm = (props) => {
             description: '',
             image: ''
         });
+        if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+        }
     };
+
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        // Optional: show temporary preview
+        const preview = URL.createObjectURL(file);
+        setFormData(prev => ({ ...prev, image: preview }));
+
+        // Upload to FreeImage
+        const uploadedUrl = await freeImage(file);
+        setFormData(prev => ({ ...prev, image: uploadedUrl }));
+        console.log("Final image URL:", uploadedUrl);
+    };
+
 
     return (
         <div>
             <h2>AdminForm</h2>
             <Box
                 component="form"
-                sx={{ alignItems: "center", width: "20rem", backgroundColor: "#f5f5f5", padding: 2, '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                sx={{ alignItems: "center", width: "20rem", backgroundColor: "#ffffffff", padding: 2, '& .MuiTextField-root': { m: 1, width: '25ch' } }}
                 noValidate
                 autoComplete="off"
                 onSubmit={handleSubmit}
@@ -75,36 +95,16 @@ const AdminForm = (props) => {
                         onChange={handleChange}
                     />
 
-                    <TextField
-                        required
-                        id="image"
-                        label="Image URL"
-                        name="image"
-                        value={formData.image}
-                        onChange={handleChange}
-                        helperText="Paste URL here or upload below"
-                    />
+                    <input type="file" accept="image/png, image/jpeg, image/gif" onChange={handleImageUpload} ref={fileInputRef} />
 
-                    {/* <input
-                        type="file"
-                        accept="image/*"
-                        name="image"
-                        onChange={async (e) => {
-                            if (e.target.files && e.target.files[0]) {
-                                try {
-                                    const uploadedUrl = await uploadToFreeImageHost(e.target.files[0]);
-                                    console.log("Uploaded Image URL:", uploadedUrl);
-                                    setFormData(prev => ({
-                                        ...prev,
-                                        image: uploadedUrl
-                                    }));
-                                } catch (error) {
-                                    console.error("Upload failed in component:", error);
-                                    // Alert is handled in uploadToFreeImageHost usually, but good to be safe
-                                }
-                            }
-                        }}
-                    /> */}
+                    {/* preview */}
+                    {/* {formData.image && (
+                        <img
+                            src={formData.image}
+                            alt="preview"
+                            style={{ width: "150px", marginTop: "10px" }}
+                        />
+                    )} */}
 
                     <div style={{ width: "100%", display: "flex", flexDirection: "row", alignItems: "center", gap: 10 }}>
                         <Button type="submit" variant="contained" color="primary" style={{ flex: 1 }}>Add</Button>

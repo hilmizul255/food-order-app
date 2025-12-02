@@ -14,15 +14,15 @@ function Cart(props) {
         >
             <Box
                 sx={{
-                    backgroundColor: '#fff',   // white box
-                    borderRadius: 2,           // rounded corners
-                    padding: 4,                // spacing inside
-                    width: 400,                // width of box
-                    boxShadow: 24,             // subtle shadow
+                    backgroundColor: '#fff',  
+                    borderRadius: 2,          
+                    padding: 4,                
+                    width: 400,                
+                    boxShadow: 24,             
                 }}
             >
                 <Typography variant="h6">
-                    Total Cart
+                    Total Foods
                 </Typography>
                 <br></br>
                 {cartData.map((item) => (
@@ -33,15 +33,15 @@ function Cart(props) {
                 <Box>
                     <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                         <Typography variant="h6">
-                            Total Amount
+                            Total Price
                         </Typography>
                         <Typography sx={{ alignItems: "center" }}>
                             ${totalPrice}
                         </Typography>
                     </Box>
-                    <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
-                        <Button variant="contained" color="primary" onClick={props.hideModal}>Close</Button>
-                        <Button variant="contained" color="primary">Order</Button>
+                    <Box sx={{ display: "flex", gap: 1, mt: 2, width: "100%", justifyContent: "center" }}>
+                        <Button fullWidth variant="contained" color="error" onClick={props.hideModal}>Close</Button>
+                        <Button fullWidth variant="contained" color="primary">Order</Button>
                     </Box>
                 </Box>
             </Box>

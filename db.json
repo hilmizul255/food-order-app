@@ -12,14 +12,14 @@
       "name": "Pasta",
       "price": 30,
       "description": "A delicious pasta",
-      "image": "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg"
+      "image": "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg"
     },
     {
       "id": "31da9757-e4eb-47f1-bfa5-5ff8de9126f9",
-      "name": "test",
-      "price": "543",
-      "description": "test",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYIEHb137g9dKDGpYGFfN-mlVcANPfqC4NXg&s"
+      "name": "Burger",
+      "price": 12,
+      "description": "A delicious burger",
+      "image": "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg"
     }
   ]
 }

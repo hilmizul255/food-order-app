@@ -9,13 +9,11 @@ const [isValid, setIsValid] = useState(false);
 const showAddItemForm = () => setIsValid(true);
 const closeAddItemForm = () => setIsValid(false);
     return (
-        <div>
-            <h1>Main</h1>
+        <section>
             {isValid ? <AdminForm closeAddItemForm={closeAddItemForm}/> 
-            : <Button variant="contained" color="primary" onClick={showAddItemForm}>Add Item</Button>}
-           
+            : <Button variant="contained" color="primary" onClick={showAddItemForm}>Add Food Item</Button>}
             <Meals showAddItemForm={showAddItemForm}/>
-        </div>
+        </section>
     );
 }
 
